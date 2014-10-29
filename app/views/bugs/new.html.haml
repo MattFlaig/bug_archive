@@ -1,0 +1,23 @@
+%section
+  = form_for @bug do |f|
+    %header
+      %h1 Add a new bug to your archive!
+    %fieldset.large-6
+      %p
+        = f.label :name
+        = f.text_field :name
+      %p
+        = f.label :category
+        = f.select :category_id, options_for_select(Category.all.map {|category| [category.name, category.id]})
+      %p
+        = f.label :description
+        = f.text_area :description, rows: 6
+      %p
+        = f.label :error_message
+        = f.text_area :message
+      %p
+        = f.label :environment
+        = f.select :environment, options_for_select(["Test", "Development", "Production"])
+    %br
+    .large-6
+      %input(type="submit" value="Add bug" class="button")
