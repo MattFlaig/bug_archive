@@ -1,0 +1,6 @@
+%header
+  %h1 Bugs by Category
+    %p= @category.name
+      - @category.bugs.each do |bug|
+        = bug.name
+        = bug.description
