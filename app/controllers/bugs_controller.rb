@@ -5,6 +5,10 @@ class BugsController < ApplicationController
     @bugs = Bug.all
   end
 
+  def show
+    @bug = Bug.find(params[:id])
+  end
+
   def new
     @bug = Bug.new
   end

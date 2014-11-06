@@ -1,0 +1,18 @@
+%header
+  %h1 Your bug in detail
+%container
+  %table.large-6
+    %thead
+      %tr 
+        %th Bug name
+        %th Category
+        %th Description
+        %th Error message
+        %th Environment
+    %tbody
+      %tr
+        %td= @bug.name
+        %td= @bug.category.name
+        %td= @bug.description
+        %td= @bug.message
+        %td= @bug.environment

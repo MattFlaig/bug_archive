@@ -2,5 +2,7 @@
   %h1 Bugs by Category
   %h4= @category.name
   - @category.bugs.each do |bug|
-    %p= bug.name
-    %p= bug.description
+    %p.panel.large-6
+      = bug.name
+      %br
+      = bug.description
