@@ -1,4 +1,5 @@
 %header
   %h1 All your bugs
+%container
   - @bugs.each do |bug|
     %p= link_to bug.name, bug_path(bug)
