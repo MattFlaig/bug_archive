@@ -1,6 +1,28 @@
 require 'spec_helper'
 
 describe BugsController do 
+  describe "GET#index" do 
+    it "sets the @bugs collection" do 
+      category = Category.create(name: "Test category") 
+      bug1 = Bug.create(name: "first bug", description: "just a bug", message: "Here is a bug",
+                            environment: "Test", category_id: category.id)
+      bug2 = Bug.create(name: "second bug", description: "just another bug", message: "Here is another bug",
+                            environment: "Test", category_id: category.id)
+      get :index
+      expect(Bug.all).to match_array([bug1,bug2])
+    end
+  end
+
+  describe "GET#show" do 
+    it "sets the @bug variable" do
+      category = Category.create(name: "Test category") 
+      bug = Bug.create(name: "first bug", description: "just a bug", message: "Here is a bug",
+                            environment: "Test", category_id: category.id)
+      get :show, id: bug.id
+      expect(assigns(:bug)).to eq(bug)
+    end
+  end
+
   describe "GET#new" do 
     it "sets the @bug variable" do 
       get :new
@@ -21,8 +43,8 @@ describe BugsController do
       it "sets a flash success message" do 
  				expect(flash[:success]).to eq("New Bug created!") 
       end
-      it "redirects to bugs path" do 
-      	expect(response).to redirect_to bugs_path
+      it "redirects to root path" do 
+      	expect(response).to redirect_to root_path
       end
     end
     context "with invalid input" do 
