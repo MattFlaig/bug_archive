@@ -24,6 +24,10 @@ class BugsController < ApplicationController
     end 
   end
 
+  def search
+    @results = Bug.search_by_name(params[:search_term])
+  end
+
   private
 
   def bug_params
