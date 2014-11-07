@@ -3,14 +3,19 @@
     %li.name
       %h1= link_to "Bug Archive", root_path
   %section.top-bar-section
-    %ul.right
-      %li= link_to "New", new_bug_path
-      %li= link_to "Home", root_path
-      %li.has-dropdown 
-        %a Categories
-        %ul.dropdown
-          - @categories.each do |category|
-            %li= link_to category.name, category_path(category.id)
-      %li= link_to "Logout"
+    %ul.row
+      = form_tag search_bugs_path do
+        %li.has-form
+          %input(type="text" placeholder="Search for bugs" name="search_term") 
+        %li
+          %input.button(type="submit" value="Search")
+        %li= link_to "New", new_bug_path
+        %li= link_to "Home", root_path
+        %li.has-dropdown 
+          %a Categories
+          %ul.dropdown
+            - @categories.each do |category|
+              %li= link_to category.name, category_path(category.id)
+        %li= link_to "Logout"
 
     
