@@ -1,0 +1,13 @@
+%section
+  = form_tag login_path do
+    %header
+      %h1 Login
+    %fieldset.large-6
+      %p
+        = label_tag :email, "Email Address"
+        = email_field_tag :email 
+      %p
+        = label_tag :password
+        = password_field_tag :password
+    %br
+    %input(type="submit" value="Login" class="button")
