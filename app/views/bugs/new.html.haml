@@ -19,7 +19,7 @@
         = f.label :environment
         = f.select :environment, options_for_select(["Test", "Development", "Production"])
 
-        = f.hidden_field :solved?, value: 0 
+        = f.hidden_field :solved?, value: "0" 
     %br
     .large-6
       %input(type="submit" value="Add bug" class="button")

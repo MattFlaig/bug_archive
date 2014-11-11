@@ -1,0 +1,19 @@
+%section
+  = form_for [@bug, Solution.new] do |f|
+    %header
+      %h1 Add a new solution to:
+      = @bug.name
+    %br
+    %fieldset.large-6
+      %p
+        = f.label :solution
+        = f.text_area :solution, rows: 4
+      %p
+        = f.label :explanation
+        = f.text_area :explanation, rows: 6
+      %p
+        = f.label :related_links
+        = f.text_area :related_links, rows: 2
+    %br
+    .large-6
+      %input(type="submit" value="Add Solution" class="button")

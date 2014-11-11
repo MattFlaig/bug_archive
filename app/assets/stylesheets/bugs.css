@@ -1,3 +1,10 @@
+/*GENERAL*/
 section.content{
 	margin: 50px;
+}
+
+/*BUG SHOW*/
+.solution a{
+	color: #fff;
+  text-decoration: none;
 }
