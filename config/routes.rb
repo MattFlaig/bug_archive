@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :bugs do 
+    resources :solutions
+    
     collection do 
       post 'search', to: 'bugs#search'
     end

@@ -16,3 +16,21 @@
         %td= @bug.description
         %td= @bug.message
         %td= @bug.environment
+  %br
+  - if @bug.solutions
+    %h1 Your solution:
+    %table.large-6
+      %thead
+        %tr 
+          %th Solution
+          %th Explanation
+          %th Related links
+      - @bug.solutions.each do |s|
+        %tbody
+          %tr
+            %td= s.solution
+            %td= s.explanation
+            %td= s.related_links
+  %br
+  %a(href="/bugs/#{@bug.id}/solutions/new" class="button") Add solution
+    
