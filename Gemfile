@@ -17,7 +17,8 @@ group :development do
   gem 'pry'
 end
 
-group :test do 
+group :test, :development do 
 	gem 'rspec-rails', '~> 2.0'
-
+	gem 'fabrication'
+	gem 'faker'
 end

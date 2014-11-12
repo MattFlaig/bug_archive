@@ -8,6 +8,7 @@ class SolutionsController < ApplicationController
 
   def create
     @solution = Solution.new(solution_params)
+    @solution.bug = @bug
     if @solution.save
     	flash[:success] = "New solution added."
     	redirect_to bug_path(@bug)

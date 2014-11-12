@@ -3,6 +3,6 @@
   %h4= @category.name
   - @category.bugs.each do |bug|
     %p.panel.large-6
-      = bug.name
+      = link_to bug.name, bug_path(bug)
       %br
       = bug.description
