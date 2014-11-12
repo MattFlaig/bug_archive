@@ -17,17 +17,19 @@
         %td= @bug.message
         %td= @bug.environment
   %br
-  - if @bug.solutions
-    %h1 Your solution:
+  - if @bug.solutions.any?
+    %h1 Your solutions:
     %table.large-6
       %thead
         %tr 
-          %th Solution
+          %th Solution number
+          %th Solution text
           %th Explanation
           %th Related links
-      - @bug.solutions.each do |s|
-        %tbody
+      %tbody    
+        - @bug.solutions.each_with_index do |s, i|
           %tr
+            %td= i + 1
             %td= s.solution
             %td= s.explanation
             %td= s.related_links
