@@ -1,4 +1,5 @@
 class SolutionsController < ApplicationController
+  before_action :require_user
   before_action :set_bug
   before_action :set_categories
 
@@ -13,7 +14,8 @@ class SolutionsController < ApplicationController
     	flash[:success] = "New solution added."
     	redirect_to bug_path(@bug)
     else
-    	render 'bugs/bug_id'
+      #@solutions = @bug.solutions.reload
+    	render 'bugs/show'
     end
   end
 
