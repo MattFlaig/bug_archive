@@ -27,6 +27,21 @@ class BugsController < ApplicationController
     end 
   end
 
+  def edit
+    @bug = Bug.find(params[:id])
+  end
+
+  def update
+    @bug = Bug.find(params[:id])
+    if @bug.update(bug_params)
+      flash[:success] = "Bug successfully updated."
+      redirect_to bug_path(@bug)
+    else
+      flash[:alert] = "Error while updating bug."
+      render 'edit'
+    end
+  end
+
   def search
     @results = Bug.search_by_name(params[:search_term])
   end
