@@ -19,6 +19,28 @@ class SolutionsController < ApplicationController
     end
   end
 
+  def edit
+    @solution = Solution.find(params[:id])
+  end
+
+  def update
+    @solution = Solution.find(params[:id])
+    if @solution.update(solution_params)
+      flash[:success] = "Solution successfully updated."
+      redirect_to bug_path(@bug)
+    else
+      flash[:alert] = "Error while updating solution."
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @solution = Solution.find(params[:id])
+    @solution.destroy
+    flash[:info] = "Solution deleted."
+    redirect_to bug_path(@bug)
+  end
+
   private
 
   def set_bug

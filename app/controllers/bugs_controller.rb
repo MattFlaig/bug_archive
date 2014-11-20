@@ -42,6 +42,13 @@ class BugsController < ApplicationController
     end
   end
 
+  def destroy
+    @bug = Bug.find(params[:id])
+    @bug.destroy
+    flash[:info] = "Bug has been deleted."
+    redirect_to bug_path(@bug) 
+  end
+
   def search
     @results = Bug.search_by_name(params[:search_term])
   end
