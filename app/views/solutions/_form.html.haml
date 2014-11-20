@@ -1,0 +1,17 @@
+%section
+  = form_for [@bug, @solution] do |f|
+    %br
+    %fieldset.large-6
+      %p
+        = f.label :solution
+        = f.text_area :solution, rows: 4
+      %p
+        = f.label :explanation
+        = f.text_area :explanation, rows: 6
+      %p
+        = f.label :related_links
+        = f.text_area :related_links, rows: 2
+    %br
+    .large-6
+      = f.submit(@solution.new_record? ? "Add solution" : "Update solution", class: "button")
+      

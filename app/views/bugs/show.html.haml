@@ -17,7 +17,10 @@
         %td= @bug.description
         %td= @bug.message
         %td= @bug.environment
-        %td= link_to "Edit", edit_bug_path(@bug)
+        %td
+          %p= link_to "Edit", edit_bug_path(@bug)
+
+          %p= link_to "Delete", bug_path(@bug), method: :delete, confirm: "Are you sure?"
   %br
   - if @bug.solutions.any?
     %h1 Your solutions:
@@ -36,7 +39,9 @@
             %td= s.solution
             %td= s.explanation
             %td= s.related_links
-            %td= link_to "Edit", edit_bug_solution_path(bug_id: @bug.id, id: s.id)
+            %td
+              %p= link_to "Edit", edit_bug_solution_path(bug_id: @bug.id, id: s.id)
+              %p= link_to "Delete", bug_solution_path(bug_id: @bug.id, id: s.id), method: :delete, confirm: "Are you sure?"
   %br
-  %a(href="/bugs/#{@bug.id}/solutions/new" class="button") Add solution
+  %a(href="/bugs/#{@bug.id}/solutions/new" class="button") New solution
     
