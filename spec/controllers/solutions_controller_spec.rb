@@ -56,4 +56,73 @@ describe SolutionsController do
       end
     end
   end
+
+  describe "PUT#update" do 
+    let(:amanda) {Fabricate(:user)}
+    let(:category) {Fabricate(:category)}
+    let(:bug) {Fabricate(:bug, user_id: amanda.id, category_id: category.id)}
+    let(:solution) {Fabricate(:solution, bug_id: bug.id)}
+
+    it_behaves_like "requires login" do 
+      let(:action) {put :update, bug_id: 1, id: 1}
+    end
+
+    context "with valid input" do 
+      before do 
+        set_current_user(amanda)
+        put :update, {bug_id: bug.id, id: solution.id, solution: {solution: "Updated solution"}}
+      end
+      it "updates the solution" do 
+        expect(Solution.first.solution).to eq("Updated solution")
+      end
+      it "sets a success message" do 
+        expect(flash[:success]).to eq("Solution successfully updated.")
+      end
+      it "redirects to bug show" do 
+        expect(response).to redirect_to bug_path(bug.id)
+      end
+    end
+
+    context "with invalid input" do 
+      before do 
+        set_current_user(amanda)
+        put :update, {bug_id: bug.id, id: solution.id, solution: {solution: ""}}
+      end
+      it "does not update the solution" do 
+        expect(Solution.first.solution).to eq(solution.solution)
+      end
+      it "sets an error message" do 
+        expect(flash[:alert]).to eq("Error while updating solution.")
+      end
+      it "renders the edit template" do 
+        expect(response).to render_template :edit
+      end
+    end
+  end
+
+  describe "DELETE#destroy" do 
+    let(:amanda) {Fabricate(:user)}
+    let(:category) {Fabricate(:category)}
+    let(:bug) {Fabricate(:bug, user_id: amanda.id, category_id: category.id)}
+    let(:solution) {Fabricate(:solution, bug_id: bug.id)}
+
+    it_behaves_like "requires login" do 
+      let(:action) {delete :destroy, bug_id: 1, id: 1}
+    end
+
+    before do 
+      set_current_user(amanda)
+      delete :destroy, {bug_id: bug.id, id: solution.id}
+    end
+
+    it "deletes the solution" do 
+      expect(Solution.count).to eq(0)
+    end
+    it "sets an info message" do 
+      expect(flash[:info]).to be_present
+    end
+    it "redirects to bug show" do 
+      expect(response).to redirect_to(bug_path(bug.id))
+    end
+  end
 end

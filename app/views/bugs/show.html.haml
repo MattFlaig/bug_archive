@@ -22,6 +22,18 @@
 
           %p= link_to "Delete", bug_path(@bug), method: :delete, confirm: "Are you sure?"
   %br
+  %section
+  = form_for @listing do |f|
+    %fieldset.large-6
+      %p
+        = f.label :snippet
+        = f.text_area :snippet
+        = f.hidden_field :listingable_id, @bug.id
+        = f.hidden_field :listingable_type, "bug"
+      %p
+        = f.submit("Add a code snippet" class: "button")
+
+
   - if @bug.solutions.any?
     %h1 Your solutions:
     %table.large-6
@@ -30,7 +42,7 @@
           %th Solution number
           %th Solution text
           %th Explanation
-          %th Related links
+          %th Related link
           %th Actions
       %tbody    
         - @bug.solutions.each_with_index do |s, i|
@@ -38,7 +50,7 @@
             %td= i + 1
             %td= s.solution
             %td= s.explanation
-            %td= s.related_links
+            %td= link_to "#{s.related_links}", s.related_links
             %td
               %p= link_to "Edit", edit_bug_solution_path(bug_id: @bug.id, id: s.id)
               %p= link_to "Delete", bug_solution_path(bug_id: @bug.id, id: s.id), method: :delete, confirm: "Are you sure?"
