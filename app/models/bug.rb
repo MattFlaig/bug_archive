@@ -1,7 +1,10 @@
 class Bug < ActiveRecord::Base
+  #include Codelistingable
+  	
   belongs_to :category
   belongs_to :user
   has_many :solutions
+  has_many :listings, :as => :listingable
 
   validates_presence_of :name, :description, :environment, :category_id
 

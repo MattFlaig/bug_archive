@@ -5,7 +5,10 @@ Rails.application.routes.draw do
     collection do 
       post 'search', to: 'bugs#search'
     end
+
+    resources :listings, only: [:create]
   end
+
   root to: 'pages#home'
 
   resources :categories

@@ -1,6 +1,9 @@
 class Solution < ActiveRecord::Base
-  belongs_to :bug
+  #include Codelistingable
 
+  has_many :listings, :as => :listingable
+  
+  belongs_to :bug, :dependent => :destroy
   validates_presence_of :solution, :explanation
 
 end

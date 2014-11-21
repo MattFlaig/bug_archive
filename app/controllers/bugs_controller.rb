@@ -9,6 +9,7 @@ class BugsController < ApplicationController
 
   def show
     @bug = Bug.find(params[:id])
+    #@listings = @bug.listings
   end
 
   def new
@@ -46,7 +47,7 @@ class BugsController < ApplicationController
     @bug = Bug.find(params[:id])
     @bug.destroy
     flash[:info] = "Bug has been deleted."
-    redirect_to bug_path(@bug) 
+    redirect_to root_path
   end
 
   def search
