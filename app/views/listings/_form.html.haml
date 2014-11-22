@@ -1,0 +1,9 @@
+%section
+= form_for [@bug, @listing] do |f|
+  %p.large-6
+    = f.label :filename
+    = f.text_field :filename
+    = f.label :snippet
+    = f.text_area :snippet, rows: 6
+  %p
+    = f.submit(value: "Add a code snippet", class: "button")
