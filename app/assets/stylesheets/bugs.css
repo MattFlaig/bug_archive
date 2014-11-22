@@ -4,12 +4,14 @@ section.content{
 }
 
 /*BUG SHOW*/
-.solution a{
-	color: #fff;
-  text-decoration: none;
-}
+
 
 .divided{
 	margin-right: 30px;
 }
+
+.strong{
+	font-weight: bold;
+}
+
 

@@ -2,6 +2,10 @@ class ListingsController < ApplicationController
   before_action :set_categories
   before_action :require_user
 
+  def new
+    @bug = Bug.find(params[:bug_id])
+    @listing = Listing.new
+  end
   def create
   	@bug = Bug.find(params[:bug_id])
     @listing = @bug.listings.build(listing_params.merge!(user: current_user))

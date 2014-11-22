@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       post 'search', to: 'bugs#search'
     end
 
-    resources :listings, only: [:create]
+    resources :listings, only: [:new, :create]
   end
 
   root to: 'pages#home'
