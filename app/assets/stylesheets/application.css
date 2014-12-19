@@ -13,6 +13,6 @@
  *= require_tree .
  *= require_self
  *= require normalize.css
- *= require bugs.css
  *= require foundation.css
+ *= require bugs.css
  */
