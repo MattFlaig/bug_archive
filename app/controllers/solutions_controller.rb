@@ -29,7 +29,7 @@ class SolutionsController < ApplicationController
       flash[:success] = "Solution successfully updated."
       redirect_to bug_path(@bug)
     else
-      flash[:alert] = "Error while updating solution."
+      flash[:danger] = "Error while updating solution."
       render 'edit'
     end
   end

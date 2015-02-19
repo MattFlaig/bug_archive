@@ -1,16 +1,16 @@
 %section
   = form_for [@bug, @solution] do |f|
     %br
-    %fieldset.large-6
-      %p
-        = f.label :solution
-        = f.text_area :solution, rows: 4
-      %p
-        = f.label :explanation
-        = f.text_area :explanation, rows: 6
-      %p
-        = f.label :related_links
-        = f.text_area :related_links, rows: 2
-    %br
-      = f.submit(@solution.new_record? ? "Add solution" : "Update solution", class: "button")
+    %section.formspace
+      .form-group
+        = f.label :solution, class: "control-label"
+        = f.text_area :solution, rows: 4, class: "form-control"
+      .form-group
+        = f.label :explanation, class: "control-label"
+        = f.text_area :explanation, rows: 6, class: "form-control"
+      .form-group
+        = f.label :related_links, class: "control-label"
+        = f.text_area :related_links, rows: 2, class: "form-control"
+      .form-group
+        = f.submit(@solution.new_record? ? "Add solution" : "Update solution", class: "btn btn-success")
       

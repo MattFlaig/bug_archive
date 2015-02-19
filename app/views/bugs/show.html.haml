@@ -1,9 +1,9 @@
 %section.container
   %section.jumbotron
     %header
-      %h1 Your bug in detail
+      %h2 Your bug in detail
     %section
-      %table
+      %table.table-striped.table-bordered
         %thead
           %tr 
             %th Bug name
@@ -20,36 +20,37 @@
             %td= @bug.message
             %td= @bug.environment
             %td
-              %p= link_to "Edit", edit_bug_path(@bug)
-
-              %p= link_to "Delete", bug_path(@bug), method: :delete, confirm: "Are you sure?"
+              = link_to "Edit", edit_bug_path(@bug)
+              = link_to "Delete", bug_path(@bug), method: :delete, confirm: "Are you sure?"
 
       %br
       - if @bug.listings.any?
         %h4 Related Bug code:
         %div
           - @bug.listings.each do |listing|
-            %h7= listing.filename
+            = listing.filename
             %pre.prettyprint= listing.snippet
           %br
-      %a(href="/bugs/#{@bug.id}/listings/new" class="button") New code listing
+      %a(href="/bugs/#{@bug.id}/listings/new" class="btn btn-warning") New code listing
       %br  
       %br
       - if @bug.solutions.any?
-        %h4 Your solutions:
-        - @bug.solutions.each do |s|
-          %div
-            %h6 Solution:
-            %p= s.solution
-            %br
-            %h6 Explanation:
-            %p= s.explanation
-            %br
-            %h6 Related link:
-            %p= link_to "#{s.related_links}", s.related_links
-            %br
-            %h6 Actions:
-            = link_to "Edit", edit_bug_solution_path(bug_id: @bug.id, id: s.id)
-            = link_to "Delete", bug_solution_path(bug_id: @bug.id, id: s.id), method: :delete, confirm: "Are you sure?"
-      %a(href="/bugs/#{@bug.id}/solutions/new" class="button") New solution
+        %h2 Your solutions
+        %table.table-striped.table-bordered
+          %tr 
+            %th Solution
+            %th Explanation
+            %th Related Link
+            %th Actions
+          - @bug.solutions.each do |s|   
+            %tr
+              %td= s.solution
+              %td= s.explanation
+              %td= link_to "#{s.related_links}", s.related_links
+              %td
+                = link_to "Edit", edit_bug_solution_path(bug_id: @bug.id, id: s.id)
+                = link_to "Delete", bug_solution_path(bug_id: @bug.id, id: s.id), method: :delete, confirm: "Are you sure?"
+      %br
+      %a(href="/bugs/#{@bug.id}/solutions/new" class="btn btn-warning") New solution
+
       

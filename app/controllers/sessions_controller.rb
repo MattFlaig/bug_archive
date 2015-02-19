@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       flash[:success] = 'You are signed in!'
       redirect_to bugs_path
     else
-      flash[:alert] = "Invalid email or password. Please try again."
+      flash[:danger] = "Invalid email or password. Please try again."
       redirect_to login_path
     end
   end

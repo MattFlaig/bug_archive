@@ -23,7 +23,7 @@ class BugsController < ApplicationController
       flash[:success] = "New Bug created!"
       redirect_to root_path
     else
-      flash[:alert] = "There is something wrong with your input!"
+      flash[:danger] = "There is something wrong with your input!"
     	render 'new'
     end 
   end
@@ -38,7 +38,7 @@ class BugsController < ApplicationController
       flash[:success] = "Bug successfully updated."
       redirect_to bug_path(@bug)
     else
-      flash[:alert] = "Error while updating bug."
+      flash[:danger] = "Error while updating bug."
       render 'edit'
     end
   end

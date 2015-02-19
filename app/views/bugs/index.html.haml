@@ -1,9 +1,11 @@
 %section.container
   %section.jumbotron
     %header
-      %h1 All your bugs
+      %h2 All your bugs
     %section
-      %ul
+      %table.table-striped.table-hover.table-bordered
         - @bugs.each do |bug|
-          %li= link_to bug.name, bug_path(bug)
+          %tr
+            %td
+              %h4= link_to bug.name, bug_path(bug)
       

@@ -12,9 +12,9 @@ class ListingsController < ApplicationController
     
     if @listing.save
       flash[:success] = "New listing added."
-      redirect_to @bug
+      redirect_to bug_path(@bug)
     else
-      flash[:alert] = "Error while creating listing. Please add a snippet."
+      flash[:danger] = "Error while creating listing. Please add a snippet."
       render 'bugs/show'
     end
 
@@ -27,7 +27,7 @@ class ListingsController < ApplicationController
   end
 
   def listing_params
-  	params.require(:listing).permit(:snippet, :user_id, :listingable_type, :listingable_id)
+  	params.require(:listing).permit(:snippet, :user_id, :listingable_type, :listingable_id, :filename)
   end
 
 end
