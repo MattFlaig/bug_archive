@@ -1,8 +1,10 @@
+%section.container
+  %section.jumbotron
 %header
   %h1 Bugs by Category
   %h4= @category.name
   - @category.bugs.each do |bug|
-    %p.panel.large-6
+    %p
       = link_to bug.name, bug_path(bug)
       %br
       = bug.description

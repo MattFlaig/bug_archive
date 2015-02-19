@@ -1,6 +1,8 @@
-%header
-  %h1 Your Search Results
-%container
-  %article.large-6
-    - @results.each do |bug|
-      = link_to bug.name, bug_path(bug)
+%section.container
+  %section.jumbotron
+    %header
+      %h1 Your Search Results
+    %section
+      %article
+        - @results.each do |bug|
+          = link_to bug.name, bug_path(bug)

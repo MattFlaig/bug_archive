@@ -1,0 +1,35 @@
+- if @solutions.any?
+  %h4 Your solutions to:
+  = @bug.name
+  %br
+  %br
+  - @solutions.each do |s|
+    %div.panel.large-6
+      %h6.strong Solution:
+      %p= s.solution
+      %br
+      %h6.strong Explanation:
+      %p= s.explanation
+      %br
+      %h6.strong Related link:
+      %p= link_to "#{s.related_links}", s.related_links
+      %br
+      %h6.strong Actions:
+      = link_to "Edit", edit_bug_solution_path(bug_id: @bug.id, id: s.id)
+      = link_to "Delete", bug_solution_path(bug_id: @bug.id, id: s.id), method: :delete, confirm: "Are you sure?"
+
+
+%br
+- @solutions.each do |s|
+  - if s.listings.any?
+    %h4 Related Solution code:
+    %div.panel.large-6
+      - s.listings.each do |listing|
+        = listing.filename
+        %p
+          %pre.prettyprint= listing.snippet
+          %br
+  %a(href="/solutions/#{s.id}/listings/solutions/new" class="button") New code listing
+%br  
+%br
+%a(href="/bugs/#{@bug.id}/solutions/new" class="button") New solution

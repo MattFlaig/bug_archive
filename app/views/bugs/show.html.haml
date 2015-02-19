@@ -1,53 +1,55 @@
-%header
-  %h1 Your bug in detail
-%container
-  %table.large-12
-    %thead
-      %tr 
-        %th Bug name
-        %th Category
-        %th Description
-        %th Error message
-        %th Environment
-        %th Actions
-    %tbody
-      %tr
-        %td= @bug.name
-        %td= @bug.category.name
-        %td= @bug.description
-        %td= @bug.message
-        %td= @bug.environment
-        %td
-          %p= link_to "Edit", edit_bug_path(@bug)
+%section.container
+  %section.jumbotron
+    %header
+      %h1 Your bug in detail
+    %section
+      %table
+        %thead
+          %tr 
+            %th Bug name
+            %th Category
+            %th Description
+            %th Error message
+            %th Environment
+            %th Actions
+        %tbody
+          %tr
+            %td= @bug.name
+            %td= @bug.category.name
+            %td= @bug.description
+            %td= @bug.message
+            %td= @bug.environment
+            %td
+              %p= link_to "Edit", edit_bug_path(@bug)
 
-          %p= link_to "Delete", bug_path(@bug), method: :delete, confirm: "Are you sure?"
+              %p= link_to "Delete", bug_path(@bug), method: :delete, confirm: "Are you sure?"
 
-  %br
-  - if @bug.listings.any?
-    %h4 Related Bug code:
-    %div.panel.large-6
-      - @bug.listings.each do |listing|
-        %h7= listing.filename
-        %pre.prettyprint= listing.snippet
       %br
-  %a(href="/bugs/#{@bug.id}/listings/new" class="button") New code listing
-  %br  
-  %br
-  - if @bug.solutions.any?
-    %h4 Your solutions:
-    - @bug.solutions.each do |s|
-      %div.panel.large-6
-        %h6.strong Solution:
-        %p= s.solution
-        %br
-        %h6.strong Explanation:
-        %p= s.explanation
-        %br
-        %h6.strong Related link:
-        %p= link_to "#{s.related_links}", s.related_links
-        %br
-        %h6.strong Actions:
-        = link_to "Edit", edit_bug_solution_path(bug_id: @bug.id, id: s.id)
-        = link_to "Delete", bug_solution_path(bug_id: @bug.id, id: s.id), method: :delete, confirm: "Are you sure?"
-  %a(href="/bugs/#{@bug.id}/solutions/new" class="button") New solution
-    
+      - if @bug.listings.any?
+        %h4 Related Bug code:
+        %div
+          - @bug.listings.each do |listing|
+            %h7= listing.filename
+            %pre.prettyprint= listing.snippet
+          %br
+      %a(href="/bugs/#{@bug.id}/listings/new" class="button") New code listing
+      %br  
+      %br
+      - if @bug.solutions.any?
+        %h4 Your solutions:
+        - @bug.solutions.each do |s|
+          %div
+            %h6 Solution:
+            %p= s.solution
+            %br
+            %h6 Explanation:
+            %p= s.explanation
+            %br
+            %h6 Related link:
+            %p= link_to "#{s.related_links}", s.related_links
+            %br
+            %h6 Actions:
+            = link_to "Edit", edit_bug_solution_path(bug_id: @bug.id, id: s.id)
+            = link_to "Delete", bug_solution_path(bug_id: @bug.id, id: s.id), method: :delete, confirm: "Are you sure?"
+      %a(href="/bugs/#{@bug.id}/solutions/new" class="button") New solution
+      

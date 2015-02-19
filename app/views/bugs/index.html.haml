@@ -1,7 +1,9 @@
-%header
-  %h1 All your bugs
-%container
-  %ul
-    - @bugs.each do |bug|
-      %li.panel.small-8= link_to bug.name, bug_path(bug)
+%section.container
+  %section.jumbotron
+    %header
+      %h1 All your bugs
+    %section
+      %ul
+        - @bugs.each do |bug|
+          %li= link_to bug.name, bug_path(bug)
       

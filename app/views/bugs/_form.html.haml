@@ -1,6 +1,6 @@
 %section
   = form_for @bug do |f|
-    %fieldset.large-6
+    %fieldset
       %p
         = f.label :name
         = f.text_field :name
@@ -18,6 +18,5 @@
         = f.select :environment, options_for_select(["Test", "Development", "Production"])
 
     %br
-    .large-6
       = f.submit(@bug.new_record? ? "Add bug" : "Update bug", class: "button")
       / %input(type="submit" class="button")

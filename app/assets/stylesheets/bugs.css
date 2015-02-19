@@ -1,43 +1,36 @@
 /*GENERAL*/
-section.content{
-	margin: 50px;
+
+@import "bootstrap";
+
+nav.navbar.navbar-inverse section.navbar-header h3
+{
+	/*margin-left: 50px;*/
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
-section #spacer{
-	width: 100 %;
-	height: 300px;
-}
-
-#maintitle{
-	height: 60px;
-	background: #333;
-	z-index: 99;
-}
-
-#band {
-    height: 60px;
-    background: teal;
-}
-
-#maintitle a{
-	color: #fff;
-}
-
-ul.right {
-	margin: 20px;
+nav.navbar.navbar-inverse section.navbar-header h3 a, a:hover
+{
+	text-decoration: none;
 }
 
 
-
-/*BUG SHOW*/
-
-
-.divided{
-	margin-right: 30px;
+nav.navbar.navbar-inverse
+{
+	padding-right: 50px;
+	padding-left: 50px;
 }
 
-.strong{
-	font-weight: bold;
+section
+{
+	overflow: auto;
 }
+
+.formspace
+{
+	width: 40%;
+}
+
+
 
 

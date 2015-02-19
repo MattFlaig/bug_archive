@@ -1978,14 +1978,14 @@ meta.foundation-mq-topbar {
         .top-bar-section ul li > button.warning:hover, .top-bar-section ul li > button.warning:focus {
           color: white; }
     .top-bar-section ul li:hover:not(.has-form) > a {
-      background-color: #555555;
-      background: #272727;
-      color: white; }
+      /*background-color: #555555;*/
+      /*background: #272727;*/
+      color: #008cba; }
     .top-bar-section ul li.active > a {
       background: #008cba;
       color: white; }
       .top-bar-section ul li.active > a:hover {
-        background: #0078a0;
+        /*background: #0078a0;*/
         color: white; }
   .top-bar-section .has-form {
     padding: 15px; }
@@ -2103,7 +2103,7 @@ meta.foundation-mq-topbar {
           display: none; }
     .top-bar-section li.hover > a:not(.button) {
       background-color: #555555;
-      background: #272727;
+      background: #333;
       color: white; }
     .top-bar-section li:not(.has-form) a:not(.button) {
       padding: 0 15px;
@@ -2111,7 +2111,7 @@ meta.foundation-mq-topbar {
       background: #333333; }
       .top-bar-section li:not(.has-form) a:not(.button):hover {
         background-color: #555555;
-        background: #272727; }
+        background: #333; }
     .top-bar-section li.active:not(.has-form) a:not(.button) {
       padding: 0 15px;
       line-height: 45px;

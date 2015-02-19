@@ -12,9 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation.min.js
-//= require modernizr.js
+//= require bootstrap.min
 //= require_tree .
-$(function() {
-  $(document).foundation();
-});
+
