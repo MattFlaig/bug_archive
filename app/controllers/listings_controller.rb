@@ -4,11 +4,27 @@ class ListingsController < ApplicationController
 
   def new
     @bug = Bug.find(params[:bug_id])
+    # @solution = Solution.find(params[:solution_id])
+
+    if params[:solution_id] 
+      @object = Solution.find(params[:solution_id]) 
+    else
+      @object = nil
+    end
     @listing = Listing.new
   end
+
   def create
-  	@bug = Bug.find(params[:bug_id])
-    @listing = @bug.listings.build(listing_params.merge!(user: current_user))
+    @bug = Bug.find(params[:bug_id])
+    # @solution = Solution.find(params[:solution_id])
+    if params[:solution_id] 
+      @object = Solution.find(params[:solution_id]) 
+      @listing = @object.listings.build(listing_params.merge!(user: current_user))
+    else
+      @object = nil
+      @listing = @bug.listings.build(listing_params.merge!(user: current_user))
+    end
+    
     
     if @listing.save
       flash[:success] = "New listing added."
@@ -27,7 +43,7 @@ class ListingsController < ApplicationController
   end
 
   def listing_params
-  	params.require(:listing).permit(:snippet, :user_id, :listingable_type, :listingable_id, :filename)
+    params.require(:listing).permit(:snippet, :user_id, :listingable_type, :listingable_id, :filename)
   end
 
 end

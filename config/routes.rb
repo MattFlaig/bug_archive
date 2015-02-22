@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
+  root to: 'pages#home'
+
   resources :bugs do 
-    resources :solutions
-    
     collection do 
       post 'search', to: 'bugs#search'
     end
 
+    resources :solutions do
+      resources :listings, only: [:new, :create]
+    end
+
     resources :listings, only: [:new, :create]
   end
-
-  root to: 'pages#home'
 
   resources :categories
   resources :users

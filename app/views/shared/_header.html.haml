@@ -12,10 +12,9 @@
             %li= link_to category.name, category_path(category.id)
       %li= link_to "Logout", logout_path
     %ul.nav.navbar-nav.navbar-right
-      %form.navbar-form(role="search")
-        = form_tag search_bugs_path do
-          %input.form-control(type="text" placeholder="Search for bugs" name="search_term") 
-          %input.btn.btn-info(type="submit" value="Search")
+      = form_tag search_bugs_path, class: "navbar-form" do
+        %input.form-control(type="text" placeholder="Search for bugs" name="search_term") 
+        %input.btn.btn-info(type="submit" value="Search")
   - else
     %ul.nav.navbar-nav.navbar-right
       %li= link_to "Register", new_user_path

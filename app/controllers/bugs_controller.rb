@@ -52,6 +52,8 @@ class BugsController < ApplicationController
 
   def search
     @results = Bug.search_by_name(params[:search_term])
+    render "search"
+    # binding.pry
   end
 
   private
