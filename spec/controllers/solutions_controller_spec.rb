@@ -92,7 +92,7 @@ describe SolutionsController do
         expect(Solution.first.solution).to eq(solution.solution)
       end
       it "sets an error message" do 
-        expect(flash[:alert]).to eq("Error while updating solution.")
+        expect(flash[:danger]).to eq("Error while updating solution.")
       end
       it "renders the edit template" do 
         expect(response).to render_template :edit

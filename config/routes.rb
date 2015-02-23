@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
     resources :solutions do
       resources :listings, only: [:new, :create]
+      resources :concepts, only: [:new]
     end
 
     resources :listings, only: [:new, :create]

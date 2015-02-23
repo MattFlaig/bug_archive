@@ -4,24 +4,22 @@ class ListingsController < ApplicationController
 
   def new
     @bug = Bug.find(params[:bug_id])
-    # @solution = Solution.find(params[:solution_id])
 
     if params[:solution_id] 
-      @object = Solution.find(params[:solution_id]) 
+      @solution = Solution.find(params[:solution_id]) 
     else
-      @object = nil
+      @solution = nil
     end
     @listing = Listing.new
   end
 
   def create
     @bug = Bug.find(params[:bug_id])
-    # @solution = Solution.find(params[:solution_id])
     if params[:solution_id] 
-      @object = Solution.find(params[:solution_id]) 
-      @listing = @object.listings.build(listing_params.merge!(user: current_user))
+      @solution = Solution.find(params[:solution_id]) 
+      @listing = @solution.listings.build(listing_params.merge!(user: current_user))
     else
-      @object = nil
+      @solution = nil
       @listing = @bug.listings.build(listing_params.merge!(user: current_user))
     end
     
@@ -30,7 +28,7 @@ class ListingsController < ApplicationController
       flash[:success] = "New listing added."
       redirect_to bug_path(@bug)
     else
-      flash[:danger] = "Error while creating listing. Please add a snippet."
+      flash[:danger] = "Error while creating listing. Please add snippet data."
       render 'bugs/show'
     end
 

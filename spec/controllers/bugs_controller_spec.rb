@@ -125,7 +125,7 @@ describe BugsController do
         expect(Bug.first.name).to eq(bug.name)
       end
       it "sets an error message" do 
-        expect(flash[:alert]).to be_present
+        expect(flash[:danger]).to be_present
       end
       it "renders the edit template" do 
         expect(response).to render_template(:edit)

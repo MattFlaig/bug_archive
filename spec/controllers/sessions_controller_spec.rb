@@ -27,7 +27,7 @@ describe SessionsController do
         expect(session[:user_id]).to be_nil
       end
       it "sets an error message" do 
-      	expect(flash[:alert]).to be_present
+      	expect(flash[:danger]).to be_present
       end
       it "redirects to login path" do 
         expect(response).to redirect_to login_path
