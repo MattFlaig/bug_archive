@@ -14,7 +14,7 @@ class BugsController < ApplicationController
   end
 
   def show_concept
-    @concept = Concept.find(params[:concept])
+    @concept = Concept.find(params[:concept]) if params[:concept]
     @solution = Solution.find(params[:solution])
 
     respond_to do |format|
