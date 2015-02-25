@@ -12,5 +12,14 @@
         = f.label :related_links, class: "control-label"
         = f.text_area :related_links, rows: 2, class: "form-control"
       .form-group
-        = f.submit(@solution.new_record? ? "Add solution" : "Update solution", class: "btn btn-success")
+        = f.label :concepts, class: "control-label"
+        %br
+        = f.select :concept_ids, Concept.all.collect {|x|[x.term, x.id]}, {}, multiple: true, rows: 6 
+        %h6 
+          No concepts appearing? Create some 
+          = link_to "here", new_concept_path 
+      .form-group
+        %p= f.submit(@solution.new_record? ? "Add solution" : "Update solution", class: "btn btn-success")
+      
+
       

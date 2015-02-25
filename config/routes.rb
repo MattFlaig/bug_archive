@@ -8,17 +8,24 @@ Rails.application.routes.draw do
 
     resources :solutions do
       resources :listings, only: [:new, :create]
-      resources :concepts, only: [:new]
+      
+    end
+
+    member do 
+      post :show_concept
     end
 
     resources :listings, only: [:new, :create]
+     
   end
 
+  resources :concepts, only: [:index, :new, :create]
   resources :categories
   resources :users
 
   get 'login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
+  
 
 end
