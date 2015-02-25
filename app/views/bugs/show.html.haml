@@ -85,12 +85,14 @@
                         %br
 
                 -if s.concepts.any?
-                  %section 
+                  %section
                     %h4 Important Concepts:
                     %div
                       - s.concepts.each do |concept|
-                        = link_to concept.term, "#", class: "btn btn-default btn-xs"
+                        = link_to concept.term, show_concept_bug_path(concept: concept, solution: s.id), class: "btn btn-default btn-xs", method: 'post', remote: true
                   %br
+              
+              .concepts{:id => "item_#{s.id}"}
               %br
     %br                 
     = link_to "New solution", new_bug_solution_path(@bug), class: "btn btn-warning"               

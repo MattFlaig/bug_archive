@@ -1,0 +1,6 @@
+:plain
+
+$("#item_#{@solution.id}").html("");
+$("#item_#{@solution.id}").append("#{escape_javascript(render :partial => 'concept', :locals => {:concept => @concept, :solution => @solution} )}");
+/ ("#{escape_javascript(render(:partial => 'concept'), :locals => {:concept => @concept} }");
+

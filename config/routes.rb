@@ -11,7 +11,12 @@ Rails.application.routes.draw do
       
     end
 
+    member do 
+      post :show_concept
+    end
+
     resources :listings, only: [:new, :create]
+     
   end
 
   resources :concepts, only: [:index, :new, :create]
@@ -21,5 +26,6 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
+  
 
 end
