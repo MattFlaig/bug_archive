@@ -1,5 +1,8 @@
 %section.container
   %section.jumbotron
-    %h2 Add a new solution to:
-    = @bug.name
+    %header
+      %h2 
+        Add a new solution to:
+        = @bug.name
+    %section
     = render 'form'

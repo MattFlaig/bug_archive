@@ -2,14 +2,21 @@ class SolutionsController < ApplicationController
   before_action :require_user
   before_action :set_bug
   before_action :set_categories
+  require 'pry'
 
   def new
     @solution = Solution.new
+    @concepts = Concept.all
+    # binding.pry
   end
 
   def create
     @solution = Solution.new(solution_params)
     @solution.bug = @bug
+    # @concepts = Concept.all
+    # @solution.concepts = Concept.find WHERE params[:concept_ids]
+    binding.pry
+
     if @solution.save
     	flash[:success] = "New solution added."
     	redirect_to bug_path(@bug)
@@ -52,6 +59,6 @@ class SolutionsController < ApplicationController
   end
 
   def solution_params
-    params.require(:solution).permit(:solution, :explanation, :related_links)
+    params.require(:solution).permit! #(:solution, :explanation, :related_links, :concept_ids)
   end
 end

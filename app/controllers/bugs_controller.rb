@@ -1,6 +1,8 @@
 class BugsController < ApplicationController
   before_action :set_categories
   before_action :require_user
+  before_action :set_bug, except: [:index, :search, :new, :create]
+
   require 'pry'
 
   def index
@@ -8,8 +10,18 @@ class BugsController < ApplicationController
   end
 
   def show
-    @bug = Bug.find(params[:id])
-    #@listings = @bug.listings
+    
+  end
+
+  def show_concept
+    @concept = Concept.find(params[:concept])
+    @solution = Solution.find(params[:solution])
+
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.js 
+    end
+    # binding.pry
   end
 
   def new
@@ -29,11 +41,11 @@ class BugsController < ApplicationController
   end
 
   def edit
-    @bug = Bug.find(params[:id])
+    
   end
 
   def update
-    @bug = Bug.find(params[:id])
+  
     if @bug.update(bug_params)
       flash[:success] = "Bug successfully updated."
       redirect_to bug_path(@bug)
@@ -44,7 +56,7 @@ class BugsController < ApplicationController
   end
 
   def destroy
-    @bug = Bug.find(params[:id])
+   
     @bug.destroy
     flash[:info] = "Bug has been deleted."
     redirect_to root_path
@@ -53,7 +65,6 @@ class BugsController < ApplicationController
   def search
     @results = Bug.search_by_name(params[:search_term])
     render "search"
-    # binding.pry
   end
 
   private
@@ -64,5 +75,9 @@ class BugsController < ApplicationController
 
   def set_categories
     @categories = Category.all
+  end
+
+  def set_bug
+    @bug = Bug.find(params[:id])
   end
 end
