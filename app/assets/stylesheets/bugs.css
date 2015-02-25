@@ -1,0 +1,72 @@
+/*GENERAL*/
+
+@import "bootstrap";
+
+section.main
+{
+	/*padding-right: 100px;
+	padding-left: 100px;*/
+}
+
+.alert
+{
+	margin: 0 87px;
+}
+
+section.jumbotron
+{
+	/*margin: 0px;*/
+}
+
+nav.navbar.navbar-inverse section.navbar-header h3
+{
+	/*margin-left: 50px;*/
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+nav.navbar.navbar-inverse section.navbar-header h3 a, a:hover
+{
+	text-decoration: none;
+}
+
+
+nav.navbar.navbar-inverse
+{
+	padding-right: 50px;
+	padding-left: 50px;
+}
+
+section
+{
+	overflow: auto;
+}
+
+.jumbotron
+{
+	margin-top: 50px;
+}
+
+.formspace
+{
+	width: 40%;
+}
+
+input.form-control
+{
+	margin: auto auto;
+}
+
+table tr td 
+{
+	padding: 10px;
+}
+
+table th
+{
+	padding: 10px;
+}
+
+
+
+

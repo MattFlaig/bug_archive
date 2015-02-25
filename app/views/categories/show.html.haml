@@ -1,0 +1,9 @@
+%section.container
+  %section.jumbotron
+    %header
+      %h2= @category.name 
+    %section
+      %table.table-striped.table-hover.table-bordered
+        - @category.bugs.each do |bug|
+          %tr
+            %td= link_to bug.name, bug_path(bug)

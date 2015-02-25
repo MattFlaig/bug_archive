@@ -1,0 +1,21 @@
+%section
+  = form_for @bug do |f|
+    %section.formspace
+      .form-group
+        = f.label :name, class: "control-label"
+        = f.text_field :name, class: "form-control"
+      .form-group
+        = f.label :category, class: "control-label"
+        = f.select :category_id, options_for_select(Category.all.map {|category| [category.name, category.id]}), class: "form-control"
+      .form-group
+        = f.label :description, class: "control-label"
+        = f.text_area :description, rows: 6, class: "form-control"
+      .form-group
+        = f.label :error_message, class: "control-label"
+        = f.text_area :message, class: "form-control"
+      .form-group
+        = f.label :environment, class: "control-label"
+        = f.select :environment, options_for_select(["Test", "Development", "Production"]), class: "form-control"
+      .form-group
+        = f.submit(@bug.new_record? ? "Add bug" : "Update bug", class: "btn btn-success")
+  

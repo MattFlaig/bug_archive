@@ -1,0 +1,13 @@
+== BugArchive
+
+Rails CRUD app to archive bugs, solutions and explanations with code snippet upload, search and authentication. 
+The focus is on learning and understanding why a certain bug appeared, not just mentioning the solution.
+
+Some planned features to extend the basic functionality:
+* Dictionary of concepts
+* Tagging bugs and solutions with concepts
+* Displaying explanations dynamically with JQuery
+* Discussion / chat forum
+* StackOverflow API 
+
+
