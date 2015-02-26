@@ -17,5 +17,5 @@
         = f.label :environment, class: "control-label"
         = f.select :environment, options_for_select(["Test", "Development", "Production"]), class: "form-control"
       .form-group
-        = f.submit(@bug.new_record? ? "Add bug" : "Update bug", class: "btn btn-success")
+        = f.submit(@bug.new_record? ? "Add bug" : "Update bug", class: "btn btn-warning")
   

@@ -1,5 +1,25 @@
 /*GENERAL*/
 
+body
+{
+	background: #033;
+}
+
+#logo
+{
+	font-weight: bold;
+}
+
+#logo a:hover
+{
+	color: white;
+}
+
+#logo a
+{
+	color: #fc0;
+}
+
 section.main
 {
 	/*padding-right: 100px;
@@ -13,7 +33,33 @@ section.main
 
 section.jumbotron
 {
-	/*margin: 0px;*/
+	background: #044;
+	margin-top: 50px;
+	color: #ccc;
+}
+
+.well
+{
+	background: #055;
+	border: 1px solid #044;
+}
+
+.well.inner
+{
+	background: #066;
+	border: 1px solid #055;
+}
+
+.well.inner-solution
+{
+	background: #066;
+	border: 1px solid #055;
+}
+
+.well.core
+{
+	background: #077;
+	border: 1px solid #066;
 }
 
 nav.navbar.navbar-inverse section.navbar-header h3
@@ -33,6 +79,17 @@ nav.navbar.navbar-inverse
 {
 	padding-right: 50px;
 	padding-left: 50px;
+	background: #066;
+}
+
+nav.navbar.navbar-inverse ul li a
+{
+	color: #fc0;
+}
+
+.nav.nav-tabs li a
+{
+	color: #fc0;
 }
 
 section
@@ -40,10 +97,6 @@ section
 	overflow: auto;
 }
 
-.jumbotron
-{
-	margin-top: 50px;
-}
 
 .formspace
 {
@@ -55,6 +108,7 @@ input.form-control
 	margin: auto auto;
 }
 
+
 table tr td 
 {
 	padding: 10px;
@@ -64,6 +118,31 @@ table th
 {
 	padding: 10px;
 }
+
+table.table-bordered
+{
+	border-radius: 5px;
+}
+
+.well.inner a, a i, h3 a, h6 a
+{
+	color: #fc0;
+}
+
+.well.inner a:hover, a i:hover, h3 a:hover, h6 a:hover
+{
+	color: white;
+}
+
+.concepts section.well.core a i
+{
+	color: white;
+}
+
+
+
+
+
 
 
 

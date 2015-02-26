@@ -1,6 +1,6 @@
 %nav.navbar.navbar-inverse(role="navigation")
   %section.navbar-header
-    %h3= link_to "Bug Archive", root_path
+    %h3#logo= link_to "BUG ARCHIVE", root_path
   - if current_user
     %ul.nav.navbar-nav.navbar-right
       %li= link_to "Home", root_path
@@ -15,7 +15,7 @@
     %ul.nav.navbar-nav.navbar-right
       = form_tag search_bugs_path, class: "navbar-form" do
         %input.form-control(type="text" placeholder="Search for bugs" name="search_term") 
-        %input.btn.btn-info(type="submit" value="Search")
+        %input.btn.btn-warning(type="submit" value="Search")
   - else
     %ul.nav.navbar-nav.navbar-right
       %li= link_to "Register", new_user_path

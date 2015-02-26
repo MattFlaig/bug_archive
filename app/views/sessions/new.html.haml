@@ -1,15 +1,16 @@
 %section.container
   %section.jumbotron
-    = form_tag login_path do
-      %header
-        %h2 Login
-        %br
-      %section.formspace
-        .form-group
-          = label_tag :email, "Email", class: "control-label"
-          = email_field_tag :email, "", class: "form-control"
-        .form-group
-          = label_tag :password, "Password", class: "control-label"
-          = password_field_tag :password,  "", class: "form-control"
-        .form-group
-          %input(type="submit" value="Login" class="btn btn-primary")
+    %section.well
+      = form_tag login_path do
+        %header
+          %h2 Login
+          %br
+        %section.formspace
+          .form-group
+            = label_tag :email, "Email", class: "control-label"
+            = email_field_tag :email, "", class: "form-control"
+          .form-group
+            = label_tag :password, "Password", class: "control-label"
+            = password_field_tag :password,  "", class: "form-control"
+          .form-group
+            %input(type="submit" value="Login" class="btn btn-warning")
