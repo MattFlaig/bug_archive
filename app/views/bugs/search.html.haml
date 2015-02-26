@@ -1,11 +1,9 @@
 %section.container
   %section.jumbotron
-    %header
-      %h2 Your Search Results
-    %section
-      %article
-        %table.table-striped.table-hover.table-bordered
+    %section.well
+      %header
+        %h2 Your Search Results
+      %section
         - @results.each do |bug|
-          %tr
-            %td
-              %h4= link_to bug.name, bug_path(bug)
+          %article.well.inner
+            = link_to bug.name, bug_path(bug)

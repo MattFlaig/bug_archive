@@ -1,11 +1,13 @@
 %section.container
   %section.jumbotron
-    %header
-      %h2 All your bugs
-    %section
-      %table.table-striped.table-hover.table-bordered
-        - @bugs.each do |bug|
-          %tr
-            %td
-              %h4= link_to bug.name, bug_path(bug)
+    %section.well
+      %header
+        %h2 All your bugs
+      %section
+        %table.table-striped.table-hover.table-bordered
+          - @bugs.each do |bug|
+            %section.well.inner
+              = link_to bug.name, bug_path(bug)
+      %br
+      = link_to "New bug", new_bug_path, class: "btn btn-warning"
       

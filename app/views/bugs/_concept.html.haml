@@ -1,5 +1,5 @@
-%section.well
+%section.well.core
   %h5= @concept.term
   %h7= @concept.concept_text
-  = link_to show_concept_bug_path(solution: @solution.id), class: "btn btn-default btn-xs pull-right", method: 'post', remote: true do
+  = link_to show_concept_bug_path(solution: @solution.id), class: "btn btn-warning btn-xs pull-right", method: 'post', remote: true do
     %i.fa.fa-times

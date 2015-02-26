@@ -1,15 +1,18 @@
 %section.container
   %section.jumbotron
-    %header
-      %h2 
-        All Concepts created by 
-        = current_user.name
-    %section
-      - if @concepts.any?
-        %ul
+    %section.well
+      %header
+        %h2 
+          All Concepts created by 
+          = current_user.name
+      %section
+        - if @concepts.any?
           - @concepts.each do |concept|
-            %li
-              %h4= concept.term
-              %p.well= concept.concept_text
-      %br
-      = link_to "New Concept", new_concept_path, class: "btn btn-warning"
+            %section.well.inner
+              Concept term:
+              = concept.term
+              %br
+              Concept text:
+              = concept.concept_text
+        %br
+        = link_to "New Concept", new_concept_path, class: "btn btn-warning"

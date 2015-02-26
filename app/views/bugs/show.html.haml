@@ -1,100 +1,104 @@
 %section.container
   %section.jumbotron
-    %ul.nav.nav-tabs
-      %li
-        - if params[:tab].nil?
-          .active
-        = link_to "Bug", bug_path(@bug)
-       
-      %li
-        - if params[:tab] == "solutions"
-          .active
-        = link_to "Solutions (#{@bug.solutions.length})", bug_path(@bug, tab: 'solutions')
+    %section.well
+      %ul.nav.nav-tabs
+        %li
+          - if params[:tab].nil?
+            .active
+          = link_to "Bug", bug_path(@bug)
+         
+        %li
+          - if params[:tab] == "solutions"
+            .active
+          = link_to "Solutions (#{@bug.solutions.length})", bug_path(@bug, tab: 'solutions')
 
-    - if params[:tab].nil?
-      %header
-        %h2 Your bug in detail
-      %section.bugs.well
-        %section
-          %table.table-striped.table-bordered
-            %thead
-              %tr 
-                %th Bug name
-                %th Category
-                %th Description
-                %th Error message
-                %th Environment
-                %th Actions
-            %tbody
-              %tr
-                %td= @bug.name
-                %td= @bug.category.name
-                %td= @bug.description
-                %td= @bug.message
-                %td= @bug.environment
-                %td
-                  = link_to edit_bug_path(@bug) do
-                    %i.fa.fa-pencil.fa-fw
-                  = link_to bug_path(@bug), method: :delete, data: {confirm: 'Do you really want to delete this bug?'} do
-                    %i.fa.fa-trash-o 
-                  = link_to "Listing", new_bug_listing_path(@bug), class: "btn btn-default btn-xs"
-
-        %section
-          - if @bug.listings.any?
-            %br
-            %h4 Related Bug code:
-            %div
-              - @bug.listings.each do |listing|
-                = listing.filename
-                %pre.prettyprint= listing.snippet
-          %br  
-
-    - if params[:tab] == "solutions"
-      %section.solutions
-        - if @bug.solutions.any?
-          %h2 Your solutions
+      - if params[:tab].nil?
+        %header
+          %h2 Your bug in detail
+        %section.bugs
           %section
-            - @bug.solutions.each do |s|
-              %section.well 
-                %table.table-striped.table-bordered
-                  %thead  
-                    %tr 
-                      %th Solution
-                      %th Explanation
-                      %th Related Link
-                      %th Actions
-                  %tbody
-                    %tr
-                      %td= s.solution
-                      %td= s.explanation
-                      %td= link_to "#{s.related_links}", s.related_links
-                      %td
-                        = link_to edit_bug_solution_path(bug_id: @bug.id, id: s.id) do
-                          %i.fa.fa-pencil.fa-fw
-                        = link_to bug_solution_path(bug_id: @bug.id, id: s.id), method: :delete, data: {confirm: 'Do you really want to delete this solution?'} do
-                          %i.fa.fa-trash-o 
-                        = link_to "Listing", new_bug_solution_listing_path(@bug, s), class: "btn btn-default btn-xs"
-                %br
-                - if s.listings.any?
-                  %section 
-                    %h4 Related Solution code:
-                    %div
-                      - s.listings.each do |listing|
-                        = listing.filename
-                        %pre.prettyprint= listing.snippet
-                        %br
+            %table.table-bordered
+              %thead
+                %tr 
+                  %th Bug name
+                  %th Category
+                  %th Description
+                  %th Error message
+                  %th Environment
+                  %th Actions
+              %tbody
+                %tr
+                  %td= @bug.name
+                  %td= @bug.category.name
+                  %td= @bug.description
+                  %td= @bug.message
+                  %td= @bug.environment
+                  %td
+                    = link_to edit_bug_path(@bug) do
+                      %i.fa.fa-pencil.fa-fw.btn.btn-default.btn-xs 
+                    = link_to bug_path(@bug), method: :delete, data: {confirm: 'Do you really want to delete this bug?'} do
+                      %i.fa.fa-trash-o.btn.btn-default.btn-xs 
+                    %p
+                      = link_to "Listing", new_bug_listing_path(@bug), class: "btn btn-warning btn-xs"
 
-                -if s.concepts.any?
-                  %section
-                    %h4 Important Concepts:
-                    %div
-                      - s.concepts.each do |concept|
-                        = link_to concept.term, show_concept_bug_path(concept: concept, solution: s.id), class: "btn btn-default btn-xs", method: 'post', remote: true
-                  %br
-              
-              .concepts{:id => "item_#{s.id}"}
+          %section
+            - if @bug.listings.any?
               %br
-    %br                 
-    = link_to "New solution", new_bug_solution_path(@bug), class: "btn btn-warning"               
+              %h4 Related Bug code:
+              %div
+                - @bug.listings.each do |listing|
+                  = listing.filename
+                  %pre.prettyprint= listing.snippet
+            %br  
+          = link_to "New bug", new_bug_path, class: "btn btn-warning"
+          = link_to "New solution", new_bug_solution_path(@bug), class: "btn btn-warning"
 
-      
+      - if params[:tab] == "solutions"
+        %section.solutions
+          - if @bug.solutions.any?
+            %h2 Your solutions
+            %section
+              - @bug.solutions.each do |s|
+                %section.well.inner-solution 
+                  %table.table-bordered
+                    %thead  
+                      %tr 
+                        %th Solution
+                        %th Explanation
+                        %th Related Link
+                        %th Actions
+                    %tbody
+                      %tr
+                        %td= s.solution
+                        %td= s.explanation
+                        %td= link_to "#{s.related_links}", s.related_links
+                        %td
+                          = link_to edit_bug_solution_path(bug_id: @bug.id, id: s.id) do
+                            %i.fa.fa-pencil.fa-fw.btn.btn-default.btn-xs 
+                          = link_to bug_solution_path(bug_id: @bug.id, id: s.id), method: :delete, data: {confirm: 'Do you really want to delete this solution?'} do
+                            %i.fa.fa-trash-o.btn.btn-default.btn-xs  
+                          %p
+                            = link_to "Listing", new_bug_solution_listing_path(@bug, s), class: "btn btn-warning btn-xs"
+                  %br
+                  - if s.listings.any?
+                    %section 
+                      %h4 Related Solution code:
+                      %div
+                        - s.listings.each do |listing|
+                          = listing.filename
+                          %pre.prettyprint= listing.snippet
+                          %br
+
+                  -if s.concepts.any?
+                    %section
+                      %h4 Important Concepts:
+                      %div
+                        - s.concepts.each do |concept|
+                          = link_to concept.term, show_concept_bug_path(concept: concept, solution: s.id), class: "btn btn-warning btn-xs", method: 'post', remote: true
+                    %br
+                
+                  .concepts{:id => "item_#{s.id}"}
+                  %br
+                  = link_to "New solution", new_bug_solution_path(@bug), class: "btn btn-warning"
+
+        
