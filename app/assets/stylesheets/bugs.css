@@ -3,6 +3,7 @@
 body
 {
 	background: #033;
+	font-family: 'Cagliostro', sans-serif;
 }
 
 #logo
@@ -20,11 +21,6 @@ body
 	color: #fc0;
 }
 
-section.main
-{
-	/*padding-right: 100px;
-	padding-left: 100px;*/
-}
 
 .alert
 {
@@ -108,6 +104,21 @@ input.form-control
 	margin: auto auto;
 }
 
+#bug_category_id, #bug_environment
+{
+	color: #444;
+	width: 312px;
+	height: 35px;
+	border-radius: 5px;
+}
+
+#solution_concept_ids
+{
+	color: #444;
+	width: 312px;
+	border-radius: 5px;
+}
+
 
 table tr td 
 {
@@ -124,12 +135,12 @@ table.table-bordered
 	border-radius: 5px;
 }
 
-.well.inner a, a i, h3 a, h6 a
+.well.inner a, a i, h3 a, h6 a, td a
 {
 	color: #fc0;
 }
 
-.well.inner a:hover, a i:hover, h3 a:hover, h6 a:hover
+.well.inner a:hover, a i:hover, h3 a:hover, h6 a:hover, td a:hover
 {
 	color: white;
 }
